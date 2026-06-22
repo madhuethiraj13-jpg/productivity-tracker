@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Smart Productivity Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <!-- STREAK BAR -->
+<div class="card streak-card">
+    <div class="streak-left">
+      <span class="streak-fire">🔥</span>
+      <div>
+        <p class="streak-number" id="streakCount">0</p>
+        <p class="streak-label">Day Streak</p>
+      </div>
+    </div>
+    <div class="streak-right">
+      <p class="streak-message" id="streakMessage">Log today's activities to start your streak!</p>
+    </div>
+  </div>
+
+  <body>
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Smart Daily Productivity Tracker</h1>
+      <p>Track your day. Improve your life.</p>
+    </div>
+  
+    <!-- LOG ACTIVITY -->
+<div class="card">
+    <h2>Log an Activity</h2>
+    <input type="text" id="activityName" placeholder="Activity name (e.g. Study)">
+    <select id="activityCategory">
+      <option value="productive">Productive</option>
+      <option value="distracting">Distracting</option>
+      <option value="neutral">Neutral</option>
+      <option value="mixed">Mixed</option>
+    </select>
+    <input type="number" id="activityMinutes" placeholder="Time spent (minutes)">
+    <button onclick="addActivity()">Add Activity</button>
+<button onclick="clearActivities()" style="background: #ff6b6b; margin-top: 10px;">Clear All Activities</button>
+  </div>
+  
+  <!-- TODAY'S ACTIVITIES -->
+  <div class="card">
+    <h2>Today's Activities</h2>
+    <div id="activityList">
+      <p>No activities logged yet.</p>
+    </div>
+  </div>
+  
+  <!-- PRODUCTIVITY SCORE -->
+  <div class="card">
+    <h2>Today's Score</h2>
+    <p class="score-number" id="scoreDisplay">0%</p>
+  </div>
+  <!-- CATEGORY BREAKDOWN CHART -->
+<div class="card">
+    <h2>📊 Time Breakdown</h2>
+    <p class="card-subtitle">How did you spend your time today?</p>
+    <canvas id="categoryChart"></canvas>
+  </div>
+  
+  <!-- DAILY INSIGHT -->
+  <div class="card" id="insightCard">
+    <h2>💡 Today's Insight</h2>
+    <p id="insightText">Log activities to see your insight.</p>
+  </div>
+  
+    <!-- MY GOALS -->
+<div class="card">
+    <h2>🎯 My Goals</h2>
+    <p class="card-subtitle">Set daily targets to stay on track</p>
+  
+    <input type="text" id="goalName" placeholder="Activity to track (e.g. Study, Gym)">
+    <select id="goalCategory">
+      <option value="productive">Productive</option>
+      <option value="distracting">Distracting</option>
+      <option value="neutral">Neutral</option>
+      <option value="mixed">Mixed</option>
+    </select>
+    <input type="number" id="goalMinutes" placeholder="Target minutes per day">
+    <button onclick="addGoal()">Add Goal</button>
+<button onclick="clearGoals()" style="background: #ff6b6b; margin-top: 10px;">Clear All Goals</button>
+  
+    <div id="goalList" style="margin-top: 15px;">
+      <p>No goals set yet.</p>
+    </div>
+  </div>
+  
+  <!-- MOTIVATION CARD -->
+  <div class="card" id="motivationCard">
+    <h2>💪 Daily Motivation</h2>
+    <p id="motivationText">Add activities and goals to get your motivation message!</p>
+  </div>
+    <script src="app.js"></script>
+    <!-- WEEKLY SUMMARY -->
+<div class="card">
+    <h2>📅 Weekly Summary</h2>
+    <p class="card-subtitle">Your performance this week</p>
+    <table class="weekly-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Productive</th>
+          <th>Distracting</th>
+          <th>Score</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="weeklyTableBody">
+        <tr>
+          <td colspan="5" style="text-align:center; color:#888;">
+            Log activities to see weekly data
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  </body>
+
+</html>
