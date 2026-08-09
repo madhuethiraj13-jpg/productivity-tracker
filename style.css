@@ -1,265 +1,411 @@
 /* ===== RESET & BASE ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  body {
-    background-color: #0f0f1a;
-    color: #ffffff;
-    min-height: 100vh;
-    padding: 20px;
-  }
-  /* ===== SCROLLBAR ===== */
-::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0f0f1a;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #6c63ff;
-    border-radius: 10px;
-  }
-  
-  /* ===== SMOOTH ANIMATIONS ===== */
-  .card {
-    transition: transform 0.2s ease;
-  }
-  .card:hover {
-    transform: translateY(-2px);
-  }
-  
-  button {
-    transition: all 0.2s ease;
-  }
-  
-  /* ===== HEADER ===== */
-  .header {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #6c63ff, #3ecfcf);
-    border-radius: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .header h1 {
-    font-size: 32px;
-    font-weight: 800;
-    margin-bottom: 8px;
-  }
-  
-  .header p {
-    font-size: 16px;
-    opacity: 0.85;
-  }
-  
-  /* ===== CARDS ===== */
-  .card {
-    background-color: #1a1a2e;
-    border-radius: 16px;
-    padding: 25px;
-    margin-bottom: 20px;
-    border: 1px solid #2a2a4a;
-  }
-  
-  .card h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #6c63ff;
-  }
-  
-  /* ===== INPUTS ===== */
-  input, select {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    border: 1px solid #3a3a5a;
-    background-color: #0f0f1a;
-    color: #ffffff;
-    font-size: 15px;
-  }
-  
-  input::placeholder {
-    color: #888;
-  }
-  
-  /* ===== BUTTON ===== */
-  button {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #6c63ff, #3ecfcf);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    opacity: 0.9;
-  }
-  
-  /* ===== SCORE ===== */
-  .score-number {
-    font-size: 60px;
-    font-weight: 800;
-    text-align: center;
-    background: linear-gradient(135deg, #6c63ff, #3ecfcf);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  /* ===== ACTIVITY ITEM ===== */
-.activity-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    background-color: #0f0f1a;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #2a2a4a;
-    font-size: 15px;
-  }
-  /* ===== SUBTITLE ===== */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #0f0f1a;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0f0f1a; }
+::-webkit-scrollbar-thumb { background: #6c63ff; border-radius: 10px; }
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+.header p  { font-size: 16px; opacity: 0.85; }
+
+/* ===== CARDS ===== */
+.card {
+  background-color: #1a1a2e;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid #2a2a4a;
+  transition: transform 0.2s ease;
+}
+
+.card:hover { transform: translateY(-2px); }
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #6c63ff;
+}
+
+/* ===== SUBTITLE ===== */
 .card-subtitle {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 15px;
-    margin-top: -10px;
-  }
-  /* ===== GOAL ITEM ===== */
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 15px;
+  margin-top: -10px;
+}
+
+/* ===== INPUTS ===== */
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #3a3a5a;
+  background-color: #0f0f1a;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+input::placeholder { color: #888; }
+
+/* ===== BUTTONS ===== */
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover { opacity: 0.9; }
+
+/* ===== SCORE ===== */
+.score-number {
+  font-size: 60px;
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== ACTIVITY ITEM ===== */
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #0f0f1a;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #2a2a4a;
+  font-size: 15px;
+}
+
+/* ===== GOAL ITEMS ===== */
 .goal-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    border: 1px solid #2a2a4a;
-  }
-  
-  .goal-achieved {
-    background-color: #1a3a2a;
-    border-color: #2ecc71;
-  }
-  
-  .goal-failed {
-    background-color: #3a1a1a;
-    border-color: #ff6b6b;
-  }
-  
-  .goal-pending {
-    background-color: #1a1a2e;
-    border-color: #6c63ff;
-  }
-  
-  .goal-status {
-    font-size: 20px;
-  }
-  
-  /* ===== MOTIVATION CARD ===== */
-  #motivationCard {
-    border: 1px solid #6c63ff;
-    background: linear-gradient(135deg, #1a1a2e, #0f0f2a);
-  }
-  
-  #motivationText {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #ccccff;
-  }
-  /* ===== STREAK CARD ===== */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #2a2a4a;
+}
+
+.goal-achieved { background-color: #1a3a2a; border-color: #2ecc71; }
+.goal-failed   { background-color: #3a1a1a; border-color: #ff6b6b; }
+.goal-pending  { background-color: #1a1a2e; border-color: #6c63ff; }
+.goal-status   { font-size: 20px; }
+
+/* ===== MOTIVATION CARD ===== */
+#motivationCard {
+  border: 1px solid #6c63ff;
+  background: linear-gradient(135deg, #1a1a2e, #0f0f2a);
+}
+
+#motivationText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ccccff;
+}
+
+/* ===== STREAK CARD ===== */
 .streak-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #1a1a2e, #2a1a3e);
-    border: 1px solid #6c63ff;
-    padding: 20px 25px;
-  }
-  
-  .streak-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .streak-fire {
-    font-size: 40px;
-  }
-  
-  .streak-number {
-    font-size: 36px;
-    font-weight: 800;
-    color: #ff9500;
-    line-height: 1;
-  }
-  
-  .streak-label {
-    font-size: 13px;
-    color: #888;
-    margin-top: 2px;
-  }
-  
-  .streak-message {
-    font-size: 14px;
-    color: #ccccff;
-    text-align: right;
-    max-width: 200px;
-  }
-  /* ===== WEEKLY TABLE ===== */
-.weekly-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  .weekly-table th {
-    background-color: #0f0f1a;
-    color: #6c63ff;
-    padding: 12px;
-    text-align: left;
-    font-size: 13px;
-    border-bottom: 1px solid #2a2a4a;
-  }
-  
-  .weekly-table td {
-    padding: 12px;
-    font-size: 14px;
-    border-bottom: 1px solid #1a1a2e;
-    color: #cccccc;
-  }
-  
-  .weekly-table tr:hover {
-    background-color: #1a1a2e;
-  }
-  
-  .badge-good {
-    background-color: #1a3a2a;
-    color: #2ecc71;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-  }
-  
-  .badge-bad {
-    background-color: #3a1a1a;
-    color: #ff6b6b;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-  }
-  
-  .badge-ok {
-    background-color: #1a1a3a;
-    color: #6c63ff;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #1a1a2e, #2a1a3e);
+  border: 1px solid #6c63ff;
+  padding: 20px 25px;
+}
+
+.streak-left  { display: flex; align-items: center; gap: 15px; }
+.streak-fire  { font-size: 40px; }
+.streak-number { font-size: 36px; font-weight: 800; color: #ff9500; line-height: 1; }
+.streak-label  { font-size: 13px; color: #888; margin-top: 2px; }
+.streak-message { font-size: 14px; color: #ccccff; text-align: right; max-width: 250px; }
+
+/* ===== WEEKLY TABLE ===== */
+.weekly-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+
+.weekly-table th {
+  background-color: #0f0f1a;
+  color: #6c63ff;
+  padding: 12px;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px solid #2a2a4a;
+}
+
+.weekly-table td {
+  padding: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a2e;
+  color: #cccccc;
+}
+
+.weekly-table tr:hover td { background-color: #1a1a2e; }
+
+.badge-good { background-color: #1a3a2a; color: #2ecc71; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
+.badge-bad  { background-color: #3a1a1a; color: #ff6b6b; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
+.badge-ok   { background-color: #1a1a3a; color: #6c63ff; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
+
+/* ===== DNA ===== */
+.dna-personality {
+  background: linear-gradient(135deg, #6c63ff22, #3ecfcf22);
+  border: 1px solid #6c63ff44;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.dna-personality .p-emoji { font-size: 48px; margin-bottom: 10px; }
+
+.dna-personality .p-type {
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.dna-personality .p-desc { font-size: 13px; color: #aaa; line-height: 1.6; }
+
+.dna-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.dna-box {
+  background: #0f0f1a;
+  border: 1px solid #2a2a4a;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.dna-box .dna-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.dna-box .dna-value { font-size: 18px; font-weight: 800; color: #fff; }
+.dna-box .dna-desc  { font-size: 11px; color: #6c63ff; margin-top: 4px; }
+
+.dna-insight {
+  background: #0f0f1a;
+  border-left: 3px solid #6c63ff;
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+
+.dna-insight h4 { font-size: 13px; color: #fff; margin-bottom: 4px; }
+.dna-insight p  { font-size: 12px; color: #888; }
+
+/* ===== FRIEND CHALLENGE ===== */
+.my-score-card {
+  background: linear-gradient(135deg, #1a1a2e, #0f0f2a);
+  border: 1px solid #6c63ff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.my-score-name  { font-size: 13px; color: #888; margin-bottom: 8px; }
+
+.my-score-big {
+  font-size: 64px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.my-score-sub { font-size: 13px; color: #888; margin-top: 8px; }
+
+.vs-player {
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #2a2a4a;
+  background: #1a1a2e;
+}
+
+.vs-player.winner { background: #1a3a2a; border-color: #2ecc71; }
+.vs-player.loser  { background: #3a1a1a; border-color: #ff6b6b; }
+
+.vp-score { font-size: 36px; font-weight: 800; color: #fff; }
+.winner .vp-score { color: #2ecc71; }
+.loser  .vp-score { color: #ff6b6b; }
+
+.vp-name  { font-size: 13px; color: #888; margin-top: 4px; }
+.vs-label { font-size: 22px; font-weight: 800; color: #888; text-align: center; }
+
+/* ===== HEATMAP ===== */
+.heatmap-cell {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.heatmap-cell:hover { transform: scale(1.4); z-index: 10; position: relative; }
+
+.heatmap-tooltip {
+  position: fixed;
+  background: #1a1a2e;
+  border: 1px solid #6c63ff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  pointer-events: none;
+  display: none;
+  z-index: 100;
+  color: #fff;
+}
+/* ===== MULTI PAGE SYSTEM ===== */
+.page {
+  display: none;
+  padding: 20px 20px 90px 20px;
+  animation: fadeIn 0.3s ease;
+  min-height: 100vh;
+}
+
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  border-top: 1px solid #2a2a4a;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0 16px;
+  z-index: 999;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 6px 24px;
+  border-radius: 12px;
+  border: none;
+  background: none;
+  color: #888;
+  transition: all 0.2s ease;
+}
+
+.nav-item.active { color: #6c63ff; }
+
+.nav-item.active .nav-icon {
+  transform: translateY(-3px);
+}
+
+.nav-icon  { font-size: 24px; }
+.nav-label { font-size: 11px; font-weight: 600; }
+
+/* ===== PAGE TITLES ===== */
+.page-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.page-subtitle-main {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* ===== SCORE CARD ===== */
+.my-score-card {
+  background: linear-gradient(135deg, #1a1a2e, #0f0f2a);
+  border: 1px solid #6c63ff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.my-score-name { font-size: 13px; color: #888; margin-bottom: 8px; }
+
+.my-score-big {
+  font-size: 64px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.my-score-sub { font-size: 13px; color: #888; margin-top: 8px; }
+
+/* ===== VS PLAYER ===== */
+.vs-player {
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #2a2a4a;
+  background: #1a1a2e;
+}
+
+.vs-player.winner { background: #1a3a2a; border-color: #2ecc71; }
+.vs-player.loser  { background: #3a1a1a; border-color: #ff6b6b; }
+
+.vp-score { font-size: 36px; font-weight: 800; color: #fff; }
+.winner .vp-score { color: #2ecc71; }
+.loser  .vp-score { color: #ff6b6b; }
+.vp-name  { font-size: 13px; color: #888; margin-top: 4px; }
+.vs-label { font-size: 22px; font-weight: 800; color: #888; text-align: center; }
