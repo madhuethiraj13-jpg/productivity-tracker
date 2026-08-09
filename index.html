@@ -1,126 +1,265 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Productivity Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Smart Productivity Tracker</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <!-- STREAK BAR -->
-<div class="card streak-card">
-    <div class="streak-left">
-      <span class="streak-fire">🔥</span>
-      <div>
-        <p class="streak-number" id="streakCount">0</p>
-        <p class="streak-label">Day Streak</p>
+<body>
+
+  <!-- ===== PAGE 1: DASHBOARD ===== -->
+  <div class="page active" id="page-dashboard">
+
+    <!-- STREAK -->
+    <div class="card streak-card">
+      <div class="streak-left">
+        <span class="streak-fire">🔥</span>
+        <div>
+          <p class="streak-number" id="streakCount">0</p>
+          <p class="streak-label">Day Streak</p>
+        </div>
+      </div>
+      <div class="streak-right">
+        <p class="streak-message" id="streakMessage">Log today's activities to start your streak!</p>
       </div>
     </div>
-    <div class="streak-right">
-      <p class="streak-message" id="streakMessage">Log today's activities to start your streak!</p>
-    </div>
-  </div>
-
-  <body>
 
     <!-- HEADER -->
     <div class="header">
       <h1>Smart Daily Productivity Tracker</h1>
       <p>Track your day. Improve your life.</p>
     </div>
-  
-    <!-- LOG ACTIVITY -->
-<div class="card">
-    <h2>Log an Activity</h2>
-    <input type="text" id="activityName" placeholder="Activity name (e.g. Study)">
-    <select id="activityCategory">
-      <option value="productive">Productive</option>
-      <option value="distracting">Distracting</option>
-      <option value="neutral">Neutral</option>
-      <option value="mixed">Mixed</option>
-    </select>
-    <input type="number" id="activityMinutes" placeholder="Time spent (minutes)">
-    <button onclick="addActivity()">Add Activity</button>
-<button onclick="clearActivities()" style="background: #ff6b6b; margin-top: 10px;">Clear All Activities</button>
-  </div>
-  
-  <!-- TODAY'S ACTIVITIES -->
-  <div class="card">
-    <h2>Today's Activities</h2>
-    <div id="activityList">
-      <p>No activities logged yet.</p>
-    </div>
-  </div>
-  
-  <!-- PRODUCTIVITY SCORE -->
-  <div class="card">
-    <h2>Today's Score</h2>
-    <p class="score-number" id="scoreDisplay">0%</p>
-  </div>
-  <!-- CATEGORY BREAKDOWN CHART -->
-<div class="card">
-    <h2>📊 Time Breakdown</h2>
-    <p class="card-subtitle">How did you spend your time today?</p>
-    <canvas id="categoryChart"></canvas>
-  </div>
-  
-  <!-- DAILY INSIGHT -->
-  <div class="card" id="insightCard">
-    <h2>💡 Today's Insight</h2>
-    <p id="insightText">Log activities to see your insight.</p>
-  </div>
-  
-    <!-- MY GOALS -->
-<div class="card">
-    <h2>🎯 My Goals</h2>
-    <p class="card-subtitle">Set daily targets to stay on track</p>
-  
-    <input type="text" id="goalName" placeholder="Activity to track (e.g. Study, Gym)">
-    <select id="goalCategory">
-      <option value="productive">Productive</option>
-      <option value="distracting">Distracting</option>
-      <option value="neutral">Neutral</option>
-      <option value="mixed">Mixed</option>
-    </select>
-    <input type="number" id="goalMinutes" placeholder="Target minutes per day">
-    <button onclick="addGoal()">Add Goal</button>
-<button onclick="clearGoals()" style="background: #ff6b6b; margin-top: 10px;">Clear All Goals</button>
-  
-    <div id="goalList" style="margin-top: 15px;">
-      <p>No goals set yet.</p>
-    </div>
-  </div>
-  
-  <!-- MOTIVATION CARD -->
-  <div class="card" id="motivationCard">
-    <h2>💪 Daily Motivation</h2>
-    <p id="motivationText">Add activities and goals to get your motivation message!</p>
-  </div>
-    <script src="app.js"></script>
-    <!-- WEEKLY SUMMARY -->
-<div class="card">
-    <h2>📅 Weekly Summary</h2>
-    <p class="card-subtitle">Your performance this week</p>
-    <table class="weekly-table">
-      <thead>
-        <tr>
-          <th>Day</th>
-          <th>Productive</th>
-          <th>Distracting</th>
-          <th>Score</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="weeklyTableBody">
-        <tr>
-          <td colspan="5" style="text-align:center; color:#888;">
-            Log activities to see weekly data
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  </body>
 
+    <!-- MY GOALS -->
+    <div class="card">
+      <h2>🎯 My Goals</h2>
+      <p class="card-subtitle">Set your targets before logging your day</p>
+      <input type="text" id="goalName" placeholder="Activity to track (e.g. Study, Gym)">
+      <select id="goalCategory">
+        <option value="productive">Productive</option>
+        <option value="distracting">Distracting</option>
+        <option value="neutral">Neutral</option>
+        <option value="mixed">Mixed</option>
+      </select>
+      <input type="number" id="goalMinutes" placeholder="Target minutes per day">
+      <button onclick="addGoal()">Add Goal</button>
+      <button onclick="clearGoals()" style="background:#ff6b6b; margin-top:10px;">Clear All Goals</button>
+      <div id="goalList" style="margin-top:15px;">
+        <p>No goals set yet.</p>
+      </div>
+    </div>
+
+    <!-- LOG ACTIVITY -->
+    <div class="card">
+      <h2>Log an Activity</h2>
+      <input type="text" id="activityName" placeholder="Activity name (e.g. Study)">
+      <select id="activityCategory">
+        <option value="productive">✅ Productive</option>
+        <option value="distracting">❌ Distracting</option>
+        <option value="neutral">⚪ Neutral</option>
+        <option value="mixed">🔄 Mixed</option>
+      </select>
+      <input type="number" id="activityMinutes" placeholder="Time spent (minutes)">
+      <select id="activityMood">
+        <option value="happy">😊 Happy</option>
+        <option value="neutral">😐 Neutral</option>
+        <option value="stressed">😰 Stressed</option>
+        <option value="tired">😴 Tired</option>
+        <option value="motivated">💪 Motivated</option>
+      </select>
+      <select id="activityTimeOfDay">
+        <option value="morning">🌅 Morning (6am-12pm)</option>
+        <option value="afternoon">☀️ Afternoon (12pm-5pm)</option>
+        <option value="evening">🌆 Evening (5pm-9pm)</option>
+        <option value="night">🌙 Night (9pm-12am)</option>
+      </select>
+      <select id="activityEnergy">
+        <option value="high">⚡ High Energy</option>
+        <option value="medium">🔋 Medium Energy</option>
+        <option value="low">😩 Low Energy</option>
+      </select>
+      <button onclick="addActivity()">Add Activity</button>
+      <button onclick="clearActivities()" style="background:#ff6b6b; margin-top:10px;">Clear All Activities</button>
+    </div>
+
+    <!-- TODAY'S ACTIVITIES -->
+    <div class="card">
+      <h2>Today's Activities</h2>
+      <div id="activityList">
+        <p>No activities logged yet.</p>
+      </div>
+    </div>
+
+    <!-- SCORE -->
+    <div class="card">
+      <h2>Today's Score</h2>
+      <p class="score-number" id="scoreDisplay">0%</p>
+    </div>
+
+    <!-- CHART -->
+    <div class="card">
+      <h2>📊 Time Breakdown</h2>
+      <p class="card-subtitle">How did you spend your time today?</p>
+      <canvas id="categoryChart"></canvas>
+    </div>
+
+    <!-- INSIGHT -->
+    <div class="card" id="insightCard">
+      <h2>💡 Today's Insight</h2>
+      <p id="insightText">Log activities to see your insight.</p>
+    </div>
+
+    <!-- MOTIVATION -->
+    <div class="card" id="motivationCard">
+      <h2>💪 Daily Motivation</h2>
+      <p id="motivationText">Add activities and goals to get your motivation message!</p>
+    </div>
+
+  </div>
+
+  <!-- ===== PAGE 2: ANALYTICS ===== -->
+  <div class="page" id="page-analytics">
+
+    <div class="page-title">📊 Analytics</div>
+    <div class="page-subtitle-main">Your performance insights and trends</div>
+
+    <!-- WEEKLY SUMMARY -->
+    <div class="card">
+      <h2>📅 Weekly Summary</h2>
+      <p class="card-subtitle">Your performance this week</p>
+      <table class="weekly-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Productive</th>
+            <th>Distracting</th>
+            <th>Score</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="weeklyTableBody">
+          <tr>
+            <td colspan="5" style="text-align:center; color:#888;">
+              Log activities to see weekly data
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MONTHLY COMPARISON -->
+    <div class="card">
+      <h2>📆 Monthly Comparison</h2>
+      <p class="card-subtitle">How this month compares to last month</p>
+      <div id="monthlyComparison">
+        <p style="color:#888;">Use the app for a full month to see comparison!</p>
+      </div>
+    </div>
+
+    <!-- MOOD ANALYTICS -->
+    <div class="card">
+      <h2>😊 Mood Analytics</h2>
+      <p class="card-subtitle">How your mood affects productivity</p>
+      <div id="moodAnalytics">
+        <p>Log activities to see mood analysis.</p>
+      </div>
+    </div>
+
+    <!-- PRODUCTIVITY DNA -->
+    <div class="card">
+      <h2>🧬 Productivity DNA</h2>
+      <p class="card-subtitle">Your personal productivity personality</p>
+      <div id="dnaSection">
+        <p style="color:#888; text-align:center;">
+          Use the app for 3+ days to unlock your DNA profile!
+        </p>
+      </div>
+    </div>
+
+    <!-- HEATMAP -->
+    <div class="card">
+      <h2>📅 Your Year at a Glance</h2>
+      <p class="card-subtitle">Every day colored by productivity score</p>
+      <div id="heatmapArea" style="overflow-x:auto;"></div>
+      <div style="display:flex; align-items:center; gap:8px; margin-top:14px; font-size:12px; color:#888;">
+        <span>Less</span>
+        <div style="width:14px; height:14px; border-radius:3px; background:#1a1a2e;"></div>
+        <div style="width:14px; height:14px; border-radius:3px; background:#3a1a1a;"></div>
+        <div style="width:14px; height:14px; border-radius:3px; background:#1a4a2a;"></div>
+        <div style="width:14px; height:14px; border-radius:3px; background:#2ecc71;"></div>
+        <div style="width:14px; height:14px; border-radius:3px; background:#6c63ff;"></div>
+        <span>More productive</span>
+      </div>
+      <div id="heatmapStats" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px;"></div>
+    </div>
+
+  </div>
+
+  <!-- ===== PAGE 3: SOCIAL ===== -->
+  <div class="page" id="page-social">
+
+    <div class="page-title">🏆 Social & Export</div>
+    <div class="page-subtitle-main">Challenge friends and download your data</div>
+
+    <!-- FRIEND CHALLENGE -->
+    <div class="card">
+      <h2>🏆 Friend Challenge</h2>
+      <p class="card-subtitle">Share your score and challenge friends!</p>
+      <div id="myScoreCard" class="my-score-card">
+        <div class="my-score-name">Your Weekly Score</div>
+        <div class="my-score-big" id="challengeScore">0%</div>
+        <div class="my-score-sub" id="challengeSub">Log activities to get your score!</div>
+      </div>
+      <button onclick="shareScore()"
+        style="background:linear-gradient(135deg,#25d366,#128c7e); margin-bottom:10px;">
+        💬 Share on WhatsApp
+      </button>
+      <div style="margin-top:16px;">
+        <h3 style="font-size:15px; color:#6c63ff; margin-bottom:12px;">Compare with a Friend</h3>
+        <input type="text" id="friendName" placeholder="Friend's name" style="margin-bottom:10px;">
+        <input type="number" id="friendScore" placeholder="Friend's score (0-100)">
+        <button onclick="compareScores()">Compare Now!</button>
+      </div>
+      <div id="compareResult" style="display:none; margin-top:16px;"></div>
+    </div>
+
+    <!-- EXPORT -->
+    <div class="card">
+      <h2>📥 Export Your Data</h2>
+      <p class="card-subtitle">Download your complete monthly data for Python analysis</p>
+      <button onclick="exportCSV()"
+        style="background:linear-gradient(135deg,#2ecc71,#27ae60);">
+        📊 Download Monthly CSV
+      </button>
+      <div style="margin-top:12px; padding:12px; background:#0f0f1a;
+        border-radius:10px; font-size:13px; color:#888;">
+        💡 Download at end of each month for best analysis results.
+        File will be named automatically with the month name!
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <div class="bottom-nav">
+    <button class="nav-item active" onclick="showPage('dashboard', this)">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Dashboard</span>
+    </button>
+    <button class="nav-item" onclick="showPage('analytics', this)">
+      <span class="nav-icon">📊</span>
+      <span class="nav-label">Analytics</span>
+    </button>
+    <button class="nav-item" onclick="showPage('social', this)">
+      <span class="nav-icon">🏆</span>
+      <span class="nav-label">Social</span>
+    </button>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
 </html>
